@@ -52,7 +52,7 @@ class User extends Authenticatable
         $roles = $this->roles;
         $permissions = collect();
         foreach ($roles as $role) {}
-        $permissions = $permissions->concat($role->permissions)->unique();
+        isset($role) ? $permissions = $permissions->concat($role->permissions)->unique() : '';
         return $permissions;
     }
 }

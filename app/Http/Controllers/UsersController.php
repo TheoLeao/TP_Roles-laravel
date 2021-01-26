@@ -23,17 +23,19 @@ class UsersController extends Controller
         }
 
         //les permissions d'un utilisateur
-        $user = \App\User::find(1);
-       
-        dump($user->permissions());
+        $permissions = \App\User::find(1)->permissions();
+
 
         
         //dd($roles);
 
-        //IS
+        //is()
         //dd(Rights::is(1,'user'));
-        //CAN
-        //dd(Rights::can(1,'user.list'));
 
+        //can()
+        //dd(Rights::can(1,'user.delete'));
+
+        //canAll()
+        dd(Rights::canAll(1, ['user.list', 'user.update']));
     }
 }
