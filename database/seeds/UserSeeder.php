@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
         //Utilisateur n°1
         DB::table('users')->insert([
             'name' => 'Théo',
-            'email' => 'theo@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'theoleaoboudier@gmail.com',
+            'password' => '$2y$10$Mpdb.Aw5agLl3AA9lG1UMOkw1nTgkqwgPpRMxcD18rAdIG87yUW3S',
         ]);
     }
 }
