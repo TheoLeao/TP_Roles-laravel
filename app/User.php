@@ -46,4 +46,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function permissions()
+    {
+        $roles = $this->roles;
+        $permissions = collect();
+        foreach ($roles as $role) {}
+        $permissions = $permissions->concat($role->permissions)->unique();
+        return $permissions;
+    }
 }
