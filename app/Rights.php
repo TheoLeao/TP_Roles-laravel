@@ -19,13 +19,37 @@ class Rights
     {
         $permissions = \App\User::find($user_id)->permissions();
 
-        return $permissions->contains('name',$permission_name);
-
+        return $permissions->contains('name', $permission_name);
     }
-    public static function  canAll($user_id, $permissions_names){
-        for($i=0;$i<count($permissions_names);$i++){
-            if(!Rights::can($user_id,$permissions_names[$i])) return false;         
+
+
+    /* 
+        canAll: vérifier si l'utilisateur $user_id a toutes les permissions de $permissions_names
+    */
+    public static function canAll($user_id, $permissions_names)
+    {
+        for ($i = 0; $i < count($permissions_names); $i++) {
+            if (!Rights::can($user_id, $permissions_names[$i])) return false;
         }
         return true;
+    }
+
+
+    /* 
+        canAtLeast: vérifier si l'utilisateur $user_id a une des permissions de $permissions_names
+    */
+    public static function canAtLeast($user_id, $permissions_names)
+    {
+        for ($i = 0; $i < count($permissions_names); $i++) {
+            if (Rights::can($user_id, $permissions_names[$i])) return true;
+        }
+        return false;
+    }
+
+    /* 
+        authIs: vérifier si utilisateur connecté possede le rôle $
+    */
+    public static function authIs($role_name){
+        //$user = Auth::user();
     }
 }

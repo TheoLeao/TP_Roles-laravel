@@ -36,6 +36,8 @@ class UsersController extends Controller
         //dd(Rights::can(1,'user.delete'));
 
         //canAll()
-        dd(Rights::canAll(1, ['user.list', 'user.update']));
+        //dd(Rights::canAll(1, ['user.list', 'user.update']));
+        
+        //dd(Rights::canAtLeast(1,['user.list', 'user.update', 'user.delete']));
     }
 }
